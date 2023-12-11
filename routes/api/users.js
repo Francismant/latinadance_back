@@ -130,7 +130,7 @@ router.get("/resetPassword/:email", (req, res) => {
   connection.query(sqlSearchMail, [email], (err, result) => {
     if (err) throw err;
     if (result.length !== 0) {
-      const confirmLink = `http://localhost:3000/resetPassword?email=${email}`;
+      const confirmLink = `https://latinadance-front.vercel.app/resetPassword?email=${email}`;
       const mailOptions = {
         from: "mantfrancis@gmail.com",
         to: email,
@@ -157,7 +157,7 @@ router.get("/createAccount/:email", (req, res) => {
   connection.query(sqlSearchMail, [email], (err, result) => {
     if (err) throw err;
     if (result.length === 0) {
-      const confirmLink = `http://localhost:3000/register?email=${email}`;
+      const confirmLink = `https://latinadance-front.vercel.app/register?email=${email}`;
       const mailOptions = {
         from: "mantfrancis@gmail.com",
         to: email,
