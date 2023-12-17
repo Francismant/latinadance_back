@@ -154,13 +154,7 @@ router.get("/createAccount/:email", (req, res) => {
   const email = req.params.email;
   console.log("mail", email);
   const sqlSearchMail = "SELECT * FROM users WHERE email = ?";
-  connection.connect();
   connection.query(sqlSearchMail, [email], (err, result) => {
-    connection.end();
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ error: "Internal Server Error" });
-    }
     if (err) throw err;
     if (result.length === 0) {
       const confirmLink = `https://latinadance-front.vercel.app/register?email=${email}`;
